@@ -48,6 +48,23 @@ void BFS(node* root)
             q.push(temp->right);
     }
 }
+// void BFSL(node* root)
+// {
+//     queue<node*> q;
+//     q.push(root);
+//
+//     while(!q.empty()){
+//         int nodecount = q.size();
+//         node* temp = q.front();
+//         cout<<temp->data<<" ";
+//         q.pop();
+//
+//         if(temp->left!=NULL)
+//             q.push(temp->left);
+//         if(temp->right!=NULL)
+//             q.push(temp->right);
+//     }
+// }
 int main()
 {
     node* root = Tree();

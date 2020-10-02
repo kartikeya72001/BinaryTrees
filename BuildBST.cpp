@@ -62,24 +62,30 @@ void BFS(node *root){
     }
     return;
 }
+node* search(node* root,int key){
+	if (root == NULL or root->data == key)
+		return root;
+	else if (root->data < key)
+		return search(root->right,key);
+	return search(root->left,key);
+}
 int main() {
-	int t;
-	cin>>t;
-	while(t--)
+	node* root = NULL;
+	int n;
+	cin>>n;
+	vector<int> v(n);
+	for(int i=0;i<n;i++)
 	{
-	    node* root = NULL;
-		int n;
-		cin>>n;
-		vector<int> v(n);
-		for(int i=0;i<n;i++)
-		{
-			cin>>v[i];
-		}
-		root = buildBst(v, 0, n-1);
-		PrintPre(root);
-		cout<<endl;
-		BFS(root);
-		cout<<endl;
+		cin>>v[i];
 	}
+	root = buildBst(v, 0, n-1);
+	PrintPre(root);
+	cout<<endl;
+	BFS(root);
+	cout<<endl;
+	if(search(root,5) == NULL)
+		cout<<"Key Not Found"<<endl;
+	else
+		cout<<"Key Found"<<endl;
 	return 0;
 }
